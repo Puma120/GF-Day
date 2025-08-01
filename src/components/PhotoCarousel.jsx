@@ -48,7 +48,7 @@ const PhotoCarousel = () => {
   ];
 
   // Codificar correctamente las URLs para evitar problemas con espacios
-  const photos = photoNames.map(name => `/fotos/${encodeURIComponent(name)}`);
+  const photos = photoNames.map(name => `/Fotos/${encodeURIComponent(name)}`);
 
   useEffect(() => {
     const interval = setInterval(() => {
