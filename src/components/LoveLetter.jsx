@@ -65,7 +65,7 @@ const LoveLetter = () => {
             </div>
             
             <button className="close-letter" onClick={toggleLetter}>
-              Cerrar carta 💌
+              ✕
             </button>
           </div>
         </div>
