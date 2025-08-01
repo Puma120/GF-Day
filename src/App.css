@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  overflow-x: hidden;
+}
+
+.app {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff5f8, #ffe8ec, #fde2e4, #f2d7d5);
+  position: relative;
+}
+
+.main-content {
+  position: relative;
+  z-index: 10;
+}
+
+.carousel-section {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #ffe8ec, #fff5f8);
+  text-align: center;
+}
+
+.letter-section {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #fde2e4, #ffe8ec);
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.romantic-footer {
+  background: linear-gradient(135deg, #f8bbd9, #e1bee7, #d4a5c9);
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  box-shadow: 0 -5px 20px rgba(248, 187, 217, 0.4);
+  position: relative;
+  z-index: 10;
+}
+
+.romantic-footer p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.romantic-footer p:first-child {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8f8f8;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #f8bbd9, #e1bee7);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #e1bee7, #d4a5c9);
+}
+
+/* Animaciones globales */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.carousel-section,
+.letter-section {
+  animation: fadeIn 1s ease-out;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .carousel-section,
+  .letter-section {
+    padding: 2rem 1rem;
+  }
+}

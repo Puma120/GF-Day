@@ -1,0 +1,43 @@
+.test-hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.test-heart {
+  position: absolute;
+  font-size: 3rem;
+  color: #ff69b4;
+  animation: testFloat 5s linear infinite;
+}
+
+.test-heart:nth-child(1) {
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.test-heart:nth-child(2) {
+  left: 50%;
+  animation-delay: 1s;
+}
+
+.test-heart:nth-child(3) {
+  left: 80%;
+  animation-delay: 2s;
+}
+
+@keyframes testFloat {
+  0% {
+    transform: translateY(100vh);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+}

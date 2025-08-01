@@ -1,0 +1,241 @@
+.letter-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  perspective: 1000px;
+}
+
+.letter-envelope {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.letter-envelope:hover {
+  transform: scale(1.05);
+}
+
+.envelope-body {
+  position: absolute;
+  width: 100%;
+  height: 70%;
+  bottom: 0;
+  background: linear-gradient(145deg, #f5c2c7, #f8bbd9);
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 10px 25px rgba(248, 187, 217, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(145deg, #e1bee7, #d4a5c9);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transition: transform 0.6s ease;
+  z-index: 2;
+}
+
+.letter-envelope.open .envelope-flap {
+  transform: rotateX(-180deg);
+}
+
+.heart-seal {
+  font-size: 2rem;
+  animation: heartbeat 1.5s ease-in-out infinite;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.envelope-text {
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #d4a5c9;
+  font-weight: bold;
+}
+
+.envelope-text p {
+  margin: 5px 0;
+  font-size: 1.1rem;
+}
+
+.envelope-text small {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  animation: pulse 2s infinite;
+}
+
+.letter-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.5s ease;
+}
+
+.letter-paper {
+  background: linear-gradient(145deg, #fff9fc, #fff5f8);
+  max-width: 750px;
+  width: 95%;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 50px;
+  border-radius: 15px;
+  box-shadow: 0 20px 50px rgba(248, 187, 217, 0.4);
+  position: relative;
+  animation: slideIn 0.6s ease;
+  border: 2px solid #f5c2c7;
+}
+
+.letter-header {
+  text-align: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #e1bee7;
+  padding-bottom: 20px;
+}
+
+.letter-header h2 {
+  color: #d4a5c9;
+  font-size: 2rem;
+  margin: 0;
+  font-family: 'Brush Script MT', cursive;
+  text-shadow: 0 2px 4px rgba(248, 187, 217, 0.4);
+}
+
+.date {
+  color: #e1bee7;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+.letter-body {
+  line-height: 1.8;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.letter-body p {
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.letter-body p:first-of-type {
+  font-weight: bold;
+  color: #d4a5c9;
+}
+
+.letter-signature {
+  margin-top: 40px;
+  text-align: right;
+  font-style: italic;
+}
+
+.signature {
+  font-size: 1.3rem;
+  color: #d4a5c9;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.close-letter {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #e1bee7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.close-letter:hover {
+  background: #d4a5c9;
+  transform: scale(1.05);
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .letter-paper {
+    width: 98%;
+    padding: 30px;
+    max-width: none;
+  }
+  
+  .letter-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .letter-body {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .letter-paper {
+    padding: 20px;
+  }
+  
+  .close-letter {
+    top: 10px;
+    right: 10px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+}

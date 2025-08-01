@@ -1,0 +1,204 @@
+.carousel-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(248, 187, 217, 0.4);
+  background: linear-gradient(145deg, #fde2e4, #f8bbd9);
+  padding: 10px;
+}
+
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.carousel-photos {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f8f8;
+}
+
+.carousel-photo {
+  position: absolute;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+  transform: scale(0.95);
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-photo.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.carousel-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(248, 187, 217, 0.9));
+  color: white;
+  padding: 20px;
+  text-align: center;
+  transform: translateY(100%);
+  transition: transform 0.5s ease;
+}
+
+.carousel-container:hover .carousel-overlay {
+  transform: translateY(0);
+}
+
+.carousel-overlay h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.photo-counter {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 5px 10px;
+  border-radius: 15px;
+  display: inline-block;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  color: #e1bee7;
+  box-shadow: 0 4px 15px rgba(248, 187, 217, 0.4);
+}
+
+.carousel-btn:hover {
+  background: #f8bbd9;
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev {
+  left: 15px;
+}
+
+.carousel-btn.next {
+  right: 15px;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 15px;
+  padding-bottom: 10px;
+  flex-wrap: wrap;
+  max-height: 60px;
+  overflow-y: auto;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid #e1bee7;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.dot.active {
+  background: #f8bbd9;
+  transform: scale(1.4);
+  box-shadow: 0 0 8px rgba(248, 187, 217, 0.7);
+}
+
+.dot:hover {
+  transform: scale(1.2);
+  background: #f2d7d5;
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(248, 187, 217, 0.9);
+  }
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .carousel-container {
+    max-width: 95%;
+    margin: 1rem auto;
+  }
+  
+  .carousel-photos {
+    height: 400px;
+  }
+  
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .carousel-btn.prev {
+    left: 10px;
+  }
+  
+  .carousel-btn.next {
+    right: 10px;
+  }
+  
+  .carousel-overlay h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-photos {
+    height: 350px;
+  }
+  
+  .carousel-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+}
