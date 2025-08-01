@@ -5,47 +5,50 @@ const PhotoCarousel = () => {
   const [currentPhoto, setCurrentPhoto] = useState(0);
   
   // Todas las fotos de tu novia desde la carpeta fotos
-  const photos = [
-    '/public/fotos/IMG-20240317-WA0004.jpg',
-    '/public/fotos/IMG-20240407-WA0115.jpg',
-    '/public/fotos/IMG-20240414-WA0140.jpg',
-    '/public/fotos/IMG-20240526-WA0087.jpg',
-    '/public/fotos/IMG-20240615-WA0096.jpg',
-    '/public/fotos/IMG-20240615-WA0116.jpg',
-    '/public/fotos/IMG-20240801-WA0370.jpg',
-    '/public/fotos/IMG-20240804-WA0004.jpg',
-    '/public/fotos/IMG-20240825-WA0151.jpg',
-    '/public/fotos/IMG-20240913-WA0132.jpg',
-    '/public/fotos/IMG-20241026-WA0093.jpg',
-    '/public/fotos/IMG-20241103-WA0027.jpg',
-    '/public/fotos/IMG-20241117-WA0067.jpg',
-    '/public/fotos/IMG-20241120-WA0129.jpg',
-    '/public/fotos/IMG-20241211-WA0071.jpg',
-    '/public/fotos/IMG-20250115-WA0018.jpg',
-    '/public/fotos/IMG-20250401-WA0166.jpg',
-    '/public/fotos/IMG-20250518-WA0026.jpg',
-    '/public/fotos/IMG-20250706-WA0005.jpg',
-    '/public/fotos/IMG_20240406_153846.jpg',
-    '/public/fotos/IMG_20240407_165617.jpg',
-    '/public/fotos/IMG_20240912_190710.jpg',
-    '/public/fotos/IMG_20240927_193729.jpg',
-    '/public/fotos/IMG_20241026_221036.jpg',
-    '/public/fotos/IMG_20241029_212406.jpg',
-    '/public/fotos/IMG_20250308_191311.jpg',
-    '/public/fotos/IMG_20250705_174930.jpg',
-    '/public/fotos/netify_20240912-190151.png',
-    '/public/fotos/netify_20240912-190206.png',
-    '/public/fotos/WhatsApp Image 2025-08-01 at 7.08.00 AM.jpeg',
-    '/public/fotos/WhatsApp Image 2025-08-01 at 7.08.01 AM.jpeg',
-    '/public/fotos/WhatsApp Image 2025-08-01 at 7.08.02 AM (1).jpeg',
-    '/public/fotos/WhatsApp Image 2025-08-01 at 7.08.02 AM (2).jpeg',
-    '/public/fotos/WhatsApp Image 2025-08-01 at 7.08.02 AM.jpeg',
-    '/public/fotos/WhatsApp Image 2025-08-01 at 7.08.03 AM (1).jpeg',
-    '/public/fotos/WhatsApp Image 2025-08-01 at 7.08.03 AM.jpeg',
-    '/public/fotos/WhatsApp Image 2025-08-01 at 7.08.04 AM (1).jpeg',
-    '/public/fotos/WhatsApp Image 2025-08-01 at 7.08.04 AM (2).jpeg',
-    '/public/fotos/WhatsApp Image 2025-08-01 at 7.08.04 AM.jpeg'
+  const photoNames = [
+    'IMG-20240317-WA0004.jpg',
+    'IMG-20240407-WA0115.jpg',
+    'IMG-20240414-WA0140.jpg',
+    'IMG-20240526-WA0087.jpg',
+    'IMG-20240615-WA0096.jpg',
+    'IMG-20240615-WA0116.jpg',
+    'IMG-20240801-WA0370.jpg',
+    'IMG-20240804-WA0004.jpg',
+    'IMG-20240825-WA0151.jpg',
+    'IMG-20240913-WA0132.jpg',
+    'IMG-20241026-WA0093.jpg',
+    'IMG-20241103-WA0027.jpg',
+    'IMG-20241117-WA0067.jpg',
+    'IMG-20241120-WA0129.jpg',
+    'IMG-20241211-WA0071.jpg',
+    'IMG-20250115-WA0018.jpg',
+    'IMG-20250401-WA0166.jpg',
+    'IMG-20250518-WA0026.jpg',
+    'IMG-20250706-WA0005.jpg',
+    'IMG_20240406_153846.jpg',
+    'IMG_20240407_165617.jpg',
+    'IMG_20240912_190710.jpg',
+    'IMG_20240927_193729.jpg',
+    'IMG_20241026_221036.jpg',
+    'IMG_20241029_212406.jpg',
+    'IMG_20250308_191311.jpg',
+    'IMG_20250705_174930.jpg',
+    'netify_20240912-190151.png',
+    'netify_20240912-190206.png',
+    'WhatsApp Image 2025-08-01 at 7.08.00 AM.jpeg',
+    'WhatsApp Image 2025-08-01 at 7.08.01 AM.jpeg',
+    'WhatsApp Image 2025-08-01 at 7.08.02 AM (1).jpeg',
+    'WhatsApp Image 2025-08-01 at 7.08.02 AM (2).jpeg',
+    'WhatsApp Image 2025-08-01 at 7.08.02 AM.jpeg',
+    'WhatsApp Image 2025-08-01 at 7.08.03 AM (1).jpeg',
+    'WhatsApp Image 2025-08-01 at 7.08.03 AM.jpeg',
+    'WhatsApp Image 2025-08-01 at 7.08.04 AM (1).jpeg',
+    'WhatsApp Image 2025-08-01 at 7.08.04 AM (2).jpeg',
+    'WhatsApp Image 2025-08-01 at 7.08.04 AM.jpeg'
   ];
+
+  // Codificar correctamente las URLs para evitar problemas con espacios
+  const photos = photoNames.map(name => `/fotos/${encodeURIComponent(name)}`);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -79,6 +82,11 @@ const PhotoCarousel = () => {
     setCurrentPhoto(index);
   };
 
+  const handleImageError = (e) => {
+    console.log('Error loading image:', e.target.src);
+    e.target.style.display = 'none';
+  };
+
   return (
     <div className="carousel-container">
       <div className="carousel-wrapper">
@@ -94,6 +102,7 @@ const PhotoCarousel = () => {
               alt={`Hermosa foto ${index + 1}`}
               className={`carousel-photo ${index === currentPhoto ? 'active' : ''}`}
               loading="lazy"
+              onError={handleImageError}
             />
           ))}
           <div className="carousel-overlay">

@@ -3,14 +3,12 @@ import PhotoCarousel from './components/PhotoCarousel'
 import MessageSection from './components/MessageSection'
 import LoveLetter from './components/LoveLetter'
 import FloatingHearts from './components/FloatingHearts'
-import TestHearts from './components/TestHearts'
 import './App.css'
 
 function App() {
   return (
     <div className="app">
       <FloatingHearts />
-      <TestHearts />
       <Header />
       
       <main className="main-content">
